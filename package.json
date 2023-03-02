@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-generator-wc12",
+  "version": "1.0.0",
+  "description": "Repo to hold code for WC12 - CLI to generate a team profile based on user input.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NCStorey/Team-profile-generator-WC12.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NCStorey/Team-profile-generator-WC12/issues"
+  },
+  "homepage": "https://github.com/NCStorey/Team-profile-generator-WC12#readme",
+  "dependencies": {
+    "jest": "^29.4.3"
+  }
+}
