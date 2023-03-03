@@ -22,7 +22,7 @@
   "homepage": "https://github.com/NCStorey/Team-profile-generator-WC12#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "inquirer": "^9.1.4",
+    "inquirer": "^8.2.5",
     "jest": "^29.4.3",
     "path": "^0.12.7"
   }
