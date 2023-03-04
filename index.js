@@ -11,20 +11,53 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
-
+let teamMemberArray = []
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-const questionsManager = [
+const questionsTM = [
     {
         type: 'input',
         message: 'Please enter the Team Managers name',
-        name: 'teamManagers-name',
+        name: 'TMname',
         validate: (input) => {
             if (input == ''){
-            return 'Oops looks like you didnt enter a title. Please enter your project title'
+            return 'Oops looks like you didnt enter anything'
             }
             else {return true}}
     },
+
+    {
+        type: 'input',
+        message: 'Please enter the Team Managers Employee ID',
+        name: 'TMid',
+        validate: (input) => {
+            if (input == ''){
+            return 'Oops looks like you didnt enter anything'
+            }
+            else {return true}}
+    },
+
+    {
+        type: 'input',
+        message: 'Please enter the Team Managers email address',
+        name: 'TMemail',
+        validate: (input) => {
+            if (input == ''){
+            return 'Oops looks like you didnt enter anything'
+            }
+            else {return true}}
+    },
+
+    {
+        type: 'input',
+        message: 'Please enter the Team Managers Office number',
+        name: 'TMofficeNumber',
+        validate: (input) => {
+            if (input == ''){
+            return 'Oops looks like you didnt enter anything'
+            }
+            else {return true}}
+    }
 
 
 ]
@@ -62,11 +95,21 @@ const questionsIntern = [
 ]
 
 inquirer
-.prompt(questionsManager)
+.prompt(questionsTM)
 .then(answers => {
     console.log(answers)
 
+    //variables to hold manager information
+    const TMname = answers.TMname;
+    const TMid = answers.TMid;
+    const TMemail = answers.TMemail;
+    const TMofficeNumber = answers.TMofficeNumber;
+    //creation of a new manager using the manager blueprint
+    const manager = new Manager(TMname, TMid, TMemail, TMofficeNumber);
+    //store the information in an array for use in the render function
+    teamMemberArray.push(manager);
 
+    
 })
 .catch((error) => {
     if (error.isTtyError) {
