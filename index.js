@@ -1,14 +1,17 @@
+//'importing' all of the created modules in lib
 const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+
+//'importing' all of the external modules needed
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+//variables given in starter code which are used in the fs write file function to create the html
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./src/page-template.js");
 
 //empty array to store the team member objects created using the information gathered with inquirer and also the class blueprints
@@ -162,6 +165,7 @@ const questionsIntern = [
 
 ]
 
+//initial prompt - this gathers the Team Manager information
 inquirer
 .prompt(questionsTM)
 .then(answers => {
@@ -179,7 +183,7 @@ inquirer
     console.log(teamMemberArray)
 
 
-    //the manager information only needs to be gathered once but the size of the team is indetermined therefore the following code is placed into a function. 
+    //the manager information only needs to be gathered once but the size of the team is indetermined therefore the following code is placed into a recursive function. 
     const buildTeam = function (){
     
     //this will give the user a series of prompts around who they would like to add to their team next or if they would like to complete the team.
@@ -209,7 +213,7 @@ inquirer
             teamMemberArray.push(engineer);
             console.log(teamMemberArray);
 
-            //recursive function - function is called again to allow the addition of more team members
+            //recursive function - function is called again to allow the addition of more team members or team completion
             buildTeam()
         })
 
@@ -233,7 +237,7 @@ inquirer
             teamMemberArray.push(intern);
             console.log(teamMemberArray)
 
-            //recursive function - function is called again to allow the addition of more team members
+            //recursive function - function is called again to allow the addition of more team members or team completion
             buildTeam()
 
         })
@@ -243,13 +247,15 @@ inquirer
         //recursive function break here - to stop infinite looping
         case 'Finish building the team':
         
-        console.log('you choose finish building the team')
-        console.log('final team member array')
-        console.log(teamMemberArray)
+        console.log('Team Building complete')
 
+        //function provided in starter code - this is used to render the HTML to be used in the fs write file function. it takes the teamMemberArray as an arguement. saved into a variable to be used in the fs function below
         const HTMLinfo = render(teamMemberArray)
 
+        //fs writeFile function - this will create a new html file (or overwrite the old one), and enter it into the OUTPUT folder in the repo
         fs.writeFile(outputPath, HTMLinfo, (error) => {
+
+            //fs error catching
             return error
             ? console.log(error)
             : console.log('\nSuccess - Happy Coding!\n----------------------------------------')
@@ -257,6 +263,7 @@ inquirer
 
         break;
 
+        //default case for switch case - added as needed to complete the switch case but the code shouldnt ever get here
         default:
         console.log('Not sure how this happened?')
 
