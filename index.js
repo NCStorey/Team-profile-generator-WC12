@@ -169,7 +169,7 @@ const questionsIntern = [
 inquirer
 .prompt(questionsTM)
 .then(answers => {
-    console.log(answers)
+    
 
     //variables to hold manager information
     const TMname = answers.TMname;
@@ -180,7 +180,7 @@ inquirer
     const manager = new Manager(TMname, TMid, TMemail, TMofficeNumber);
     //store the information in an array for use in the render function
     teamMemberArray.push(manager);
-    console.log(teamMemberArray)
+
 
 
     //the manager information only needs to be gathered once but the size of the team is indetermined therefore the following code is placed into a recursive function. 
@@ -211,7 +211,7 @@ inquirer
 
             //pushes the newly created object onto the array
             teamMemberArray.push(engineer);
-            console.log(teamMemberArray);
+            
 
             //recursive function - function is called again to allow the addition of more team members or team completion
             buildTeam()
@@ -235,7 +235,7 @@ inquirer
 
             //pushes the newly created object onto the array
             teamMemberArray.push(intern);
-            console.log(teamMemberArray)
+            
 
             //recursive function - function is called again to allow the addition of more team members or team completion
             buildTeam()
