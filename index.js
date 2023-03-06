@@ -249,7 +249,7 @@ inquirer
 
         const HTMLinfo = render(teamMemberArray)
 
-        fs.writeFile('team.html', HTMLinfo, (error) => {
+        fs.writeFile(outputPath, HTMLinfo, (error) => {
             return error
             ? console.log(error)
             : console.log('\nSuccess - Happy Coding!\n----------------------------------------')
